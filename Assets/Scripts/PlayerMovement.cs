@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : Sounds
+public class PlayerMovement : MonoBehaviour
 {
-    float xmove, zmove;
     Rigidbody rb;
-    float speed;
+    float speed=5;
     [SerializeField] float jumpForce;
     [SerializeField] GameObject mainCamera;
     // Start is called before the first frame update
@@ -30,16 +29,16 @@ public class PlayerMovement : Sounds
         if (Input.GetKey(KeyCode.A))
             movement -= mainCamera.transform.right;
         movement.Normalize();
+        rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
 
         if (Input.GetKey(KeyCode.LeftShift))
             speed = 10;
-        if (Input.GetKeyDown(KeyCode.Space) /*&& start < 2*/)
+        if (Input.GetKeyDown(KeyCode.Space) && start < 2)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             start += 1;
             rb.velocity = new Vector3(movement.x*speed, rb.velocity.y, movement.z*speed);
-            PlaySound(0,volume:2f);
         }
     }
     private void OnCollisionEnter(Collision collision)
