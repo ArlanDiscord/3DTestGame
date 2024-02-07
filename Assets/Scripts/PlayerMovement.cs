@@ -10,9 +10,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject mainCamera;
     // Start is called before the first frame update
     int start = 0;
+    Vector3 startPos;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -39,6 +41,10 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             start += 1;
             rb.velocity = new Vector3(movement.x*speed, rb.velocity.y, movement.z*speed);
+        }
+        if (transform.position.y < -5)
+        {
+            transform.position = startPos;
         }
     }
     private void OnCollisionEnter(Collision collision)

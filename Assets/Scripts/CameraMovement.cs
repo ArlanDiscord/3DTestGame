@@ -11,6 +11,7 @@ public class CameraMovement : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+       
     }
 
     // Update is called once per frame
@@ -23,5 +24,6 @@ public class CameraMovement : MonoBehaviour
         player.transform.eulerAngles += new Vector3(0f, xMouse, 0f);
 
         transform.position = player.transform.position - (transform.forward*10);
+        
     }
 }
