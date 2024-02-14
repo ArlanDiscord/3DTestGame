@@ -53,5 +53,16 @@ public class PlayerMovement : MonoBehaviour
         {
             start = 0;
         }
+        if (collision.transform.tag == "MovingPlatform")
+        {
+            transform.parent = collision.transform;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.tag == "MovingPlatform")
+        {
+            transform.parent = null;
+        }
     }
 }

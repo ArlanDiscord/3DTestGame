@@ -23,7 +23,7 @@ public class CameraMovement : MonoBehaviour
         transform.eulerAngles += new Vector3(-yMouse, 0f, 0f);
         player.transform.eulerAngles += new Vector3(0f, xMouse, 0f);
 
-        transform.position = player.transform.position - (transform.forward*10);
+        transform.position = player.transform.position - (transform.forward*3);
         
     }
 }
