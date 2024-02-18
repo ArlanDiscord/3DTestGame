@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class CanOpen : MonoBehaviour
 {
-    Animator anim => GetComponent<Animator>();
+    public Animator animR;
+    public Animator animL;
     public void OpenDoor()
     {
-        anim.SetBool("isOpen", true);
+        if (animR.GetBool("isOpen") == true) {
+            Debug.Log("Close");
+            animR.SetBool("isOpen", false);
+            animL.SetBool("isOpen", false);
+        }
+        else
+        {
+            animR.SetBool("isOpen", true);
+            animL.SetBool("isOpen", true);
+        }
     }
 }
