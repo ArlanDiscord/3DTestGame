@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public int score = 0;
     Rigidbody rb;
     float speed=5;
     [SerializeField] float jumpForce;
@@ -40,12 +43,13 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             start += 1;
-            rb.velocity = new Vector3(movement.x*speed, rb.velocity.y, movement.z*speed);
+            rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
         }
         if (transform.position.y < -5)
         {
             transform.position = startPos;
         }
+        GameObject.Find("ScoreText").GetComponent<Text>().text = "Score: " + score;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -64,5 +68,9 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.parent = null;
         }
+    }
+    public void AddScore()
+    {
+        score++;
     }
 }

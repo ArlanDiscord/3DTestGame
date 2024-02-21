@@ -21,9 +21,11 @@ public class PlayerRay : MonoBehaviour
         if (Physics.Raycast(ray,out hit))
         {
             CanOpen canOpen = hit.collider.gameObject.GetComponent<CanOpen>();
-            if (canOpen && Input.GetKeyDown(KeyCode.E))
+            if (canOpen && hit.distance <= 2)
             {
-                canOpen.OpenDoor();
+                canOpen.GetComponent<Renderer>().material.color = Color.red;
+                if (Input.GetKeyDown(KeyCode.E))
+                    canOpen.OpenDoor();
             }
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class AnimController : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class AnimController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isAiming", true);
+
+        }
         if (Input.GetKey(KeyCode.W))
         {
             anim.SetBool("isIdle", false);
@@ -79,12 +86,14 @@ public class AnimController : MonoBehaviour
             anim.SetBool("isRunning", false);
             anim.SetBool("isCrouching", true);
         }
+        
         if (!Input.GetKey(KeyCode.W)&&
             !Input.GetKey(KeyCode.S)&&
             !Input.GetKey(KeyCode.A)&&
             !Input.GetKey(KeyCode.D)&&
             !Input.GetKey(KeyCode.LeftControl)&&
-            !Input.GetKey(KeyCode.LeftShift))
+            !Input.GetKey(KeyCode.LeftShift)&&
+            !Input.GetKey(KeyCode.Mouse1))
         {
             anim.SetBool("isIdle", true);
             anim.SetBool("isWalking", false);
