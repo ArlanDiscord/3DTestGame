@@ -53,10 +53,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Ground")
-        {
-            start = 0;
-        }
         if (collision.transform.tag == "MovingPlatform")
         {
             transform.parent = collision.transform;
@@ -72,5 +68,9 @@ public class PlayerMovement : MonoBehaviour
     public void AddScore()
     {
         score++;
+    }
+    public void SetJump()
+    {
+        start = 0;
     }
 }
