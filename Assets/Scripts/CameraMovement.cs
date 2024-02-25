@@ -8,10 +8,10 @@ public class CameraMovement : MonoBehaviour
     float xMouse,yMouse;
     [SerializeField] GameObject player;
     // Start is called before the first frame update
-    int locked = 0;
+    int locked = 1;
     void Start()
     {
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

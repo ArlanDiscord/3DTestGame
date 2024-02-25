@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] GameObject mainCamera;
     // Start is called before the first frame update
-    int start = 0;
+    public static int start = 0;
     Vector3 startPos;
     void Start()
     {
@@ -53,10 +53,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "MovingPlatform")
-        {
-            transform.parent = collision.transform;
-        }
+        
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -72,5 +69,6 @@ public class PlayerMovement : MonoBehaviour
     public void SetJump()
     {
         start = 0;
+        Debug.Log(start);
     }
 }

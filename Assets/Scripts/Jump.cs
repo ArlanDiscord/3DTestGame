@@ -15,8 +15,7 @@ public class Jump : PlayerMovement
     {
         
     }
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        SetJump();
     }
 }
